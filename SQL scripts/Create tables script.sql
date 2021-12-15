@@ -1,7 +1,3 @@
--- Version 1.0
-
---CREATE DATABASE Tanx
---GO
 
 USE Tanx
 GO
