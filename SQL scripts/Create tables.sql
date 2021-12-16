@@ -59,3 +59,10 @@ CREATE TABLE [Logs]
    [Exception] nvarchar(max) NULL,
    [Properties] nvarchar(max) NULL
 );
+
+CREATE TABLE [ErrorLogs]
+(
+	[Id] int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	[Message] nvarchar(max) NULL,
+	[TimeStamp] datetime NOT NULL
+);
