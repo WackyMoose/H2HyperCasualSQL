@@ -6,7 +6,7 @@ CREATE TABLE [Users]
 (
 	[PlayerId] int NOT NULL PRIMARY KEY,
 	[PlayerName] NVARCHAR(32) NOT NULL,
-	[Password] NVARCHAR(32) NOT NULL
+	[Password] NVARCHAR(max) NOT NULL
 );
 
 CREATE TABLE [Players]
