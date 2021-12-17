@@ -27,7 +27,7 @@ as
 go
 
 -- Returns 
-alter procedure GetMatchesByPlayerId @Id int
+create procedure GetMatchesByPlayerId @Id int
 as
     select 
         m.Id as 'MatchId',
