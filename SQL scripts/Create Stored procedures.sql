@@ -30,11 +30,11 @@ go
 create procedure GetMatchesByPlayerId @Id int
 as
     select 
-        m.Id as 'MatchId',
+        m.Id,
         m.MatchStatusId,
         m.WinnerPlayerId,
         m.PlayTime,
-        ms.Id 'MatchStatusId',
+        ms.Id,
         ms.StatusName
     from Players p
     join PlayerMatches pm
