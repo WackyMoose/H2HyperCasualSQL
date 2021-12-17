@@ -26,12 +26,17 @@ as
 	WHERE p.Id = @Id;
 go
 
+-- Returns 
 create procedure GetMatchesByPlayerId @Id int
 as
-	select pm.MatchId
+	select pm.MatchId, m.MatchStatusId, m.WinnerPlayerId, m.PlayTime, ms.Id, ms.StatusName
 	from Players p
 	join PlayerMatches pm
 	on p.Id = pm.PlayerId
+	join Matches m
+	on pm.MatchId = m.Id
+	join MatchStatus ms
+	on m.MatchStatusId = ms.Id
 	where p.Id = @Id
-	group by pm.MatchId
+	group by pm.MatchId, m.MatchStatusId, m.WinnerPlayerId, m.PlayTime, ms.Id, ms.StatusName
 go
