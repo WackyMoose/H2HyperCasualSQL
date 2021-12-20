@@ -15,8 +15,8 @@ as
 			else round( cast(p.Kills as float) / cast(p.Deaths as float), 2)
 		end) AS KDR 
 	from Players p
-	order by KDR desc
-go;
+	order by p.Kills desc, KDR desc
+go
 
 create procedure GetPlayerById @Id int
 as
@@ -36,13 +36,13 @@ as
         m.PlayTime,
         ms.Id,
         ms.StatusName
-    from Players p
-    join PlayerMatches pm
-    on p.Id = pm.PlayerId
+    from PlayerMatches pm
     join Matches m
     on pm.MatchId = m.Id
     join MatchStatus ms
     on m.MatchStatusId = ms.Id
-    where p.Id = 2
+    where pm.PlayerId = @Id
     group by m.Id, m.MatchStatusId, m.WinnerPlayerId, m.PlayTime, ms.Id, ms.StatusName
 go
+
+exec CreateLeaderBoard @Top = 10
